@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="../lib/mocha/mocha.css" />
+    <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/mocha/mocha.js"></script>
+    <script src="../lib/chai/chai.js"></script>
+    <script src="../lib/underscore/underscore.js"></script>
+    <script>
+      mocha.setup('bdd');
+      window.expect = chai.expect;
+      window.assert = chai.assert;
+      $(function() {
+        window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+      });
+    </script>
+
+    <!-- source files -->
+    <script type="text/javascript" src="../problems/allAnagrams/allAnagrams.js"></script>
+    <script type="text/javascript" src="../problems/asyncMap/asyncMap.js"></script>
+    <script type="text/javascript" src="../problems/balancedParens/balancedParens.js"></script>
+
+
+    <!-- spec files -->
+    <script type="text/javascript" src="spec/allAnagrams.js"></script>
+    <script type="text/javascript" src="spec/asyncMap.js"></script>
+    <script type="text/javascript" src="spec/balancedParens.js"></script>
+
+  </head>
+  <body>
+    <div id="mocha"></div>
+  </body>
+</html>
