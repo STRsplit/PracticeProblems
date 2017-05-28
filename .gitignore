@@ -1,0 +1,7 @@
+### node etc ###
+
+# Dependency directorys
+node_modules/
+
+#DS
+.DS_Store

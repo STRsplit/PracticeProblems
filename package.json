@@ -1,7 +1,7 @@
 {
-  "name": "hrsf73-toy-problems",
+  "name": "PracticeProblems",
   "version": "1.0.0",
-  "description": "Welcome to Toy Problems. This repository will be updated every morning with a new code challenge.",
+  "description": "Practice Problems.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Streed12/hrsf73-toy-problems.git"
+    "url": "https://github.com/Streed12/PracticeProblems.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Streed12/hrsf73-toy-problems/issues"
+    "url": "https://github.com/Streed12/PracticeProblems/issues"
   },
-  "homepage": "https://github.com/Streed12/hrsf73-toy-problems#readme",
+  "homepage": "https://github.com/Streed12/PracticeProblems#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.4.1"

@@ -2,30 +2,22 @@ describe('insertionSort', function() {
   it('should return null if passed null', function() {
     assert.deepEqual(insertionSort(null), null, 'A null value should return null');
   });
-  it('A single letter string should return a one element array with that string', function() {
-    assert.deepEqual(insertionSort('a'), ['a'], 'A single letter string should return the single letter');
+  it('Should return an empty array if called with an empty array', function() {
+    assert.deepEqual(insertionSort([]), [], 'An empty array should return an empty array.');
   });
 
-  it('Input "abc" should return a total of 6 anagrams', function() {
-    expect(insertionSort('abc').length).to.equal(6);
+  it('Should return a single item array when passed an array with just one element', function() {
+    assert.deepEqual(insertionSort(testingTransform([5])).map(v => v.value), [5], 'An empty array should return an empty array.');
+  });
+
+  it('Should sort an array of objects by value', function() {
+    expect(insertionSort([{value: 22}, {value: 3}, {value: 6}])).to.eql([{value: 3}, {value: 6}, {value: 22}]);
+  });
+  it('Should sort array but not switch elements with equal values', function() {
+    expect(insertionSort([{value: 22, ind: 0}, {value: 3, ind: 1}, {value: 3, ind: 2}, {value: 6, ind: 3}])).to.eql([{value: 3, ind: 1}, {value: 3, ind: 2}, {value: 6, ind: 3}, {value: 22, ind: 0}]);
   }); 
-  it('Input "abc" returned array should have "abc" as the first element', function() {
-    expect(insertionSort('abc')[0]).to.equal('abc');
-  }); 
-  it('Input "abc" returned array should have "cba" as an element', function() {
-    expect(insertionSort('abc').indexOf('cba')).to.not.equal(-1);
-  }); 
-  it('Input "abc" returned array should have "bca" as an element', function() {
-    expect(insertionSort('abc').indexOf('bca')).to.not.equal(-1);
-  }); 
-  it('Input "abc" should return all of the same anagrams as "cba"', function() {
-    let anagramsABC = insertionSort('abc');
-    let anagramsCBA = insertionSort('cba');
-    expect(_.intersection(anagramsABC, anagramsCBA).length).to.equal(6);
-    expect(_.difference(anagramsABC, anagramsCBA)).to.deep.equal([]);
-  }); 
-  it('Input string containing only the same letter should return all of the variations even if they are duplicates', function() {
-    expect(insertionSort('uuu').length).to.equal(6);
-    expect(insertionSort('uu').length).to.equal(2);
+
+  it('Unsorted array of integers should return a sorted array', function() {
+    expect(insertionSort(testingTransform([5, 8, 1, 2, 11])).map(v => v.value)).to.eql([1, 2, 5, 8, 11]);
   }); 
 });
