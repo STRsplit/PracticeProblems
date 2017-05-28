@@ -51,7 +51,4 @@ var secondLG = function(root) {
     }
 };
 
-// console.log(secondLG(mapTreeNodes([8,4,11,3,6,9,13])[0]));
-// console.log(secondLG(mapTreeNodes([8,4,11,null, null, 9,13])[0]));
-console.log(secondLG(mapTreeNodes([8,4,null,3, 6, null, null, null, null, 5, null])[0]));
 
