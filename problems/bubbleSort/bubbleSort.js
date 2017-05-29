@@ -31,11 +31,39 @@
 */
 
 // Introduce i into the global scope so we can test function efficiency
-var i;
 
+// const testingTransform = function(array) {
+//   var transform = [];
+  
+//   for (var x = 0; x < array.length; x++) {
+//     transform.push({value: array[x], x: x});
+//   }
+
+//   return transform;
+// };
+let i;
+let swap;
 // Feel free to add helper functions if needed.
 
-
-var bubbleSort = function(array) {
-  // Your code here.
+const bubbleSort = function(array) {
+  if(!array){
+    return null;
+  }
+  swap = true;
+  let len = array.length;
+  i = len - 1;
+  while(i >= 0 && swap){
+    swap = false;
+    for(let j = 1; j <= i; j++){
+      if(array[j] < array[j - 1]){
+        swap = true;
+        let temp = array[j];
+        array[j] = array[j - 1];
+        array[j - 1] = temp;
+      }
+    }
+    i--;
+  }
+  return array;
 };
+
