@@ -32,15 +32,6 @@
 
 // Introduce i into the global scope so we can test function efficiency
 
-// const testingTransform = function(array) {
-//   var transform = [];
-  
-//   for (var x = 0; x < array.length; x++) {
-//     transform.push({value: array[x], x: x});
-//   }
-
-//   return transform;
-// };
 let i;
 let swap;
 // Feel free to add helper functions if needed.
