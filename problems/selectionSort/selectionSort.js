@@ -35,7 +35,3 @@ const selectionSort = function(array) {
   }
   return array;
 };
-
-// console.log(selectionSort([0, 2, 1, 5, 3]), mins);
-// console.log(selectionSort([5, 6, 1]), mins);
-// console.log(selectionSort([1, 2, 3, 4, 5]), mins);
