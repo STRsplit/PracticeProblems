@@ -66,11 +66,24 @@
 // Extra extra credit: Implement `heapSort`. `heapSort` takes an array, constructs it into a `BinaryHeap`
 // and then iteratively returns the root of the `BinaryHeap` until its empty, thus returning a sorted array.
 
+const findParentInd = (ind) => {
+  return Math.floor((ind - 1) / 2);
+}
+const findChildInds = (ind) => {
+  return [ind * 2 + 1, ind * 2 + 2]
+}
+const findChildVals = (vals, heap) => {
+  return [heap[vals[0]], heap[vals[1]]]
+}
 
-function BinaryHeap () {
+function BinaryHeap (sortFunc) {
   this._heap = [];
   // this compare function will result in a minHeap, use it to make comparisons between nodes in your solution
-  this._compare = function (i, j) { return i < j };
+  
+  this._compare =  sortFunc ? sortFunc : function (i, j) { 
+    return i < j;
+  }
+  this._sortOut = sortFunc ? sortFunc : function(a, b){return a - b};
 }
 
 // This function works just fine and shouldn't be modified
@@ -80,8 +93,33 @@ BinaryHeap.prototype.getRoot = function () {
 
 BinaryHeap.prototype.insert = function (value) {
   // TODO: Your code here
+  this._heap.push(value)
+  let i = this._heap.length - 1;
+  let j = findParentInd(i);
+  while(i > 0 && this._compare(this._heap[i], this._heap[j])){
+    let temp = this._heap[i];
+    this._heap[i] = this._heap[j];
+    this._heap[j] = temp;
+    i = j;
+    j = findParentInd(i);
+  }
 }
 
 BinaryHeap.prototype.removeRoot = function () {
-  // TODO: Your code here
+  let removedRoot = this.getRoot();
+  this._heap[0] = this._heap.pop();
+  let len = this._heap.length;
+  let currInd = 0;
+  let currEle = this._heap[currInd];
+  let [a, b] = this._sortOut(findChildInds(currInd)[0], findChildInds(currInd)[1]);
+
+  while(a < this._heap.length && this._compare(this._heap[a], currEle)){
+    this._heap[currInd] = this._heap[a];
+    this._heap[a] = currEle;
+    currInd = a;
+    [a, b] = this._sortOut(findChildInds(currInd)[0], findChildInds(currInd)[1]);
+  }
+  return removedRoot;
 }
+
+
