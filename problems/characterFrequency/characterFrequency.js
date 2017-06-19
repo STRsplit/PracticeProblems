@@ -37,5 +37,23 @@
 
 
 var characterFrequency = function(string) {
-  return result;
+  let freqChart = {};
+
+  for(let i = 0; i < string.length; i++){
+    let currChar = string.charAt(i);
+    if(!freqChart[currChar]){
+      freqChart[currChar] = [currChar, 1];
+    } else {
+      freqChart[currChar][1]++;
+    }
+  }
+  let charTuples = Object.keys(freqChart).map(v => freqChart[v]);
+
+  return charTuples.sort((a,b) => {
+    if(a[1] === b[1]){
+      return a[0].charCodeAt() - b[0].charCodeAt();
+    } else {
+      return b[1] - a[1];
+    }
+  })
 };
