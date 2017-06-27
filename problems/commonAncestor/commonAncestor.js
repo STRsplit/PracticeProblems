@@ -13,7 +13,8 @@
   * grandma.getAncestorPath(me); // => [grandma, mom, me]
 */
 
-var Tree = function() {
+var Tree = function(name) {
+  this.name = name;
   this.children = [];
 };
 
@@ -38,9 +39,34 @@ Tree.prototype.addChild = function(child) {
   *  3.) between my grandma and my grandma -> my grandma
   *  4.) between me and a potato -> null
   */
-Tree.prototype.getClosestCommonAncestor = function(/*...*/
-) {
-  // TODO: implement me!
+Tree.prototype.getClosestCommonAncestor = function(subject1, subject2) {
+//check that both exist in the tree
+  //if both are same, return either
+  if(subject1.name === subject2.name){
+    return subject1;
+   }
+  //get paths of both subjects
+  let [ subject1Path, subject2Path ] = [this.getAncestorPath(subject1), this.getAncestorPath(subject2)]
+  //if neither one or other not descendant, return null
+  if(!subject1Path || !subject2Path){
+    return null;
+  }
+  //find shorter path
+  let [ shortPath, longPath ] = [subject1Path, subject2Path].sort((a,b) => {
+    return a.length - b.length
+  });
+  let lastChild = longPath[longPath.length - 1]
+    //starting at end of shortest, iterate backwards through path
+  for(let i = shortPath.length - 1; i >= 0; i--){
+    //declare variable and assign curr iteration value to it
+    let currRelative = shortPath[i];
+    //check end of other branch is descendant of curr iteration value
+    if(currRelative.isDescendant(lastChild)){
+      //if true return curr iteration value
+      return currRelative;
+    }
+  }
+  return null;
 };
 
 /**
@@ -51,9 +77,26 @@ Tree.prototype.getClosestCommonAncestor = function(/*...*/
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-) {
-  // TODO: implement me!
+Tree.prototype.getAncestorPath = function(subject) {
+  // first add the tree instance into the path,
+    //then iterate through children
+      //subject descendant of child? add to path
+  let ancestorPath = [];
+  if(!this.isDescendant(subject) && this.name !== subject.name){
+    return null
+  } 
+  if(this.name === subject.name){
+    return [this]
+  }
+  ancestorPath.push(this)
+
+  for(let i = 0; i < this.children.length; i++){
+    let child = this.children[i];
+    if(this.isDescendant(child)){
+      ancestorPath = ancestorPath.concat(child.getAncestorPath(subject) || [])
+    }
+  }
+  return ancestorPath;
 };
 
 /**
@@ -87,3 +130,4 @@ Tree.prototype.removeChild = function(child) {
     throw new Error('That node is not an immediate child of this tree');
   }
 };
+

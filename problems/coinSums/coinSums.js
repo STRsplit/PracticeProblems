@@ -25,7 +25,32 @@ makeChange(2) === 2
 */
 
 var makeChange = function(total) {
+  //deal with a total of 0
+  if(!total){
+    return 0;
+  }
+  //set options accumulator
+  let changeOptions = 1;
 
+  //turn the coin pieces into a Map
+  let coinMap = new Map();
+  let coins = [
+    ['1p', 1], ['2p', 2], ['5p', 5], ['10p', 10],
+    ['20p', 20], ['50p', 50], ['£1', 100], ['£2', 200]
+  ];
+  coins.forEach(coin => {
+    coinMap.set(coin[0], coin[1])
+  })
+  //iterate over coin values and find ways to make change
+  for(let value of coinMap.values()){
+    //divide the change by the value of the key
+    if(value <= total && value > 1){
+      //add the whole number dividend into the total ways
+      changeOptions += (Math.floor(total / value));
+    }
+  }
+    //return total ways
+    return changeOptions;
 };
 
 
