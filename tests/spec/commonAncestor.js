@@ -20,6 +20,21 @@ describe('CommonAncestor', function() {
       expect(testTree.removeChild).to.be.a('function');
     })
   })
+  describe('addChild Tree Method should work properly', function() {
+    let testTree;
+    beforeEach(() => {
+      testTree = new Tree('foo');
+    })
+    it('It should add a child to the parent\'s children array', function() {
+      let childTree = new Tree('bar');
+      testTree.addChild(childTree);
+      let secondChild = new Tree('zing');
+      childTree.addChild(secondChild);
+      assert.equal(testTree.children.length, 1, 'Child should be added to tree children array');
+      assert.equal(testTree.children[0].name, 'bar', 'Child tree properties should be correct');
+      assert.equal(childTree.children.length, 1, 'A child tree shoul be able to add children as well');
+    });  
+  })
   describe('Check properties of newly instantiated tree', function() {
     let testTree;
     beforeEach(() => {
@@ -123,20 +138,5 @@ describe('CommonAncestor', function() {
 
       expect(me.getClosestCommonAncestor(me, me).name).to.equal('me');
     })
-  })
- describe('addChild Tree Method should work properly', function() {
-    let testTree;
-    beforeEach(() => {
-      testTree = new Tree('foo');
-    })
-    it('It should add a child to the parent\'s children array', function() {
-      let childTree = new Tree('bar');
-      testTree.addChild(childTree);
-      let secondChild = new Tree('zing');
-      childTree.addChild(secondChild);
-      assert.equal(testTree.children.length, 1, 'Child should be added to tree children array');
-      assert.equal(testTree.children[0].name, 'bar', 'Child tree properties should be correct');
-      assert.equal(childTree.children.length, 1, 'A child tree shoul be able to add children as well');
-    });  
   })
 });

@@ -12,6 +12,19 @@
 
 
 
-var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+const commonCharacters = function(string1, string2) {
+  let letterMap = new Map();
+  let [arg1, ...rest] = Array(...arguments);
+  let remainingLetters = rest.join('')
+  let resultString = '';
+  
+  for(let i = 0; i < arg1.length; i++){
+    let currLet = arg1.charAt(i);
+    if(!remainingLetters.includes(currLet) || letterMap.has(currLet)){
+      continue;
+    }
+    resultString += currLet;
+    letterMap.set(currLet, currLet)
+  }
+  return resultString;
 };
