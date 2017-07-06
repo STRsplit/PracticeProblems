@@ -24,5 +24,11 @@ describe('Second Largest Element in BST', function() {
 
   it('Should handle unbalanced right side of root only tree with deepest leaf being left side.', function() {
     expect(secondLG(mapTreeNodes([8,null,11, null, null, 9, 13, null, null, null, null, null, null, 12, null])[0])).to.equal(12);
+  });  
+  it('Should handle unbalanced right side of root only tree with deepest leaf being left side.', function() {
+    expect(secondLG(mapTreeNodes([10, 6, null, null, 8, null, null, null, null, 7, 9])[0])).to.equal(9);
+  }); 
+  it('Should handle unbalanced right side of root only tree with deepest leaf being left side.', function() {
+    expect(secondLG(mapTreeNodes([10, 6, 14, null, 8, 12, 18, null, null, 7, 9])[0])).to.equal(14);
   }); 
 });

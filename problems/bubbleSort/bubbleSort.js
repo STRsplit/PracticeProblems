@@ -32,10 +32,33 @@
 
 // Introduce i into the global scope so we can test function efficiency
 
-let i;
-let swap;
+// let i;
+// let swap;
 // Feel free to add helper functions if needed.
 
+// const bubbleSort = function(array) {
+//   if(!array){
+//     return null;
+//   }
+//   swap = true;
+//   let len = array.length;
+//   i = len - 1;
+//   while(i >= 0 && swap){
+//     swap = false;
+//     for(let j = 1; j <= i; j++){
+//       if(array[j] < array[j - 1]){
+//         swap = true;
+//         let temp = array[j];
+//         array[j] = array[j - 1];
+//         array[j - 1] = temp;
+//       }
+//     }
+//     i--;
+//   }
+//   return array;
+// };
+let i;
+let swap;
 const bubbleSort = function(array) {
   if(!array){
     return null;
@@ -43,17 +66,16 @@ const bubbleSort = function(array) {
   swap = true;
   let len = array.length;
   i = len - 1;
-  while(i >= 0 && swap){
+  for(i; i >= 0 && swap; i--){
     swap = false;
-    for(let j = 1; j <= i; j++){
-      if(array[j] < array[j - 1]){
-        swap = true;
+    for(let j = 0; j <= i; j++){
+      if(array[j + 1] < array[j]){
         let temp = array[j];
-        array[j] = array[j - 1];
-        array[j - 1] = temp;
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+        swap = true;
       }
     }
-    i--;
   }
   return array;
 };

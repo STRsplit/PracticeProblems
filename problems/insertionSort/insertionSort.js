@@ -65,4 +65,3 @@ var insertionSort = function(array) {
   return array;
 };
 
-console.log(insertionSort(testingTransform([3, 2, 1])))

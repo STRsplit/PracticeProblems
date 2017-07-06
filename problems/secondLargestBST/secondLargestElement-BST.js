@@ -28,27 +28,46 @@ const mapTreeNodes = (array) => {
     })
    return treeArray;
 }
+// const largestNode = (parent, child) => {
+//   if (!child.right) {
+//     return [parent, child];
+//   } else {
+//     return largestNode(child, child.right);
+//   }
+// }
 
-var secondLG = function(root) {
-    // console.log(root)
-    if(!root){
-        return null;
-    }
-    if(!root.left && !root.right){
-        return null;
-    }
-    
-    if(root.right){
-        if(!secondLG(root.right)){
-            return root.val;
-        }
-        return secondLG(root.right);
-    } else {
-        if(root.left.right && secondLG(root.left.right) !== root.left.right){
-            return root.left.right.val;
-        }
-        return root.left.val;
-    }
-};
+// const secondLG = (head) => {
+//     if(!head){
+//         return null;
+//     }
+//   let [parent, child] = largestNode(null, head);
+//   if (!child.left) {
+//     return parent ? parent.val : null;
+//   }
+
+//   return largestNode(child, child.left)[1].val;
+// }
+const secondLG = (head) => {
+  let count = 0;
+
+  const walk = (node) => {
+    if (!node) {
+      return null;
+    }
+
+    let val = walk(node.right);   
+    if (val !== null) { return val; }
+
+    count++;
+    if (count === 2) {
+      return node.val;
+    }
+
+    return walk(node.left); 
+  }  
+
+  return walk(head);
+}
+
 
 
