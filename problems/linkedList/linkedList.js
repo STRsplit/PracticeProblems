@@ -56,10 +56,11 @@ LinkedList.prototype.contains = function(value) {
   if(!node){
     return false;
   }
-  while(node.next){
-    if(node.value = value){
+  while(node){
+    if(node.value === value){
       return true;
     }
+    node = node.next;
   }
   return false;
 };
@@ -67,4 +68,4 @@ LinkedList.prototype.contains = function(value) {
 LinkedList.prototype.makeNode = function(value) {
   return new ListNode(value);
 };
- 
+
