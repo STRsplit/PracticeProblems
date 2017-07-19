@@ -1,32 +1,38 @@
-/*
- * Implement a linked list using the pseudoclassical instantiation pattern.
- *
- * Your linked list should have methods called "addToTail", "removeHead", and "contains."
- *
- */
+const TreeNode = function(value) {
+  this.val = value;
+  this.left = this.right = null;
+}
 
-// EXAMPLE USAGE:
-// var list = new LinkedList();
-// list.tail;         //yields 'null'
-// list.addToTail(4);
-// list.addToTail(5);
-// list.head.value;   //yields '4';
-// list.contains(5);  //yields 'true';
-// list.contains(6);  //yields 'false';
-// list.removeHead(); //yields '4';
-// list.tail.value;   //yields '5';
-// list.removeHead(); //yields '5';
-// list.removeHead(); //yields 'null';
+const mapTrees = (array) => {
+    let treeArray = array.map((value, idx) => {
+        if(value === null){
+            return null;
+        }
+        let node = new TreeNode(value);
+        return node;
+    }).map((treeNode, ind, arr) => {
+      if(ind !== 0){
+          let parent = arr[Math.floor((ind - 1) / 2)];
+            if(parent){
+                if(ind % 2 === 0){
+                    parent.right = treeNode;
+                } else {
+                    parent.left = treeNode;
+                }
+            }
+        }
+        return treeNode;
+    })
+   return treeArray[0];
+}
 
-
-var LinkedList = function() {
+const LinkedList = function() {
   this.head = this.tail = null;
 };
-var ListNode = function(value){
+const ListNode = function(value){
   this.value = value;
   this.next = null;
 }
-//write methods here!
 
 LinkedList.prototype.addToTail = function(value) {
   let node = new ListNode(value);
@@ -68,5 +74,3 @@ LinkedList.prototype.contains = function(value) {
 LinkedList.prototype.makeNode = function(value) {
   return new ListNode(value);
 };
-
-

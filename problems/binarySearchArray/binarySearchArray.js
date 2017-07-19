@@ -52,4 +52,3 @@ binarySearch = function (array, target){
   return null;
 }
 
-

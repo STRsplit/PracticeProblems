@@ -2,10 +2,27 @@
 1. Assume array is ordered for Binary Search Tree - ie 
 the elements are ordered so that a binary tree can be constructed without manipulating array order.
 2. Assume unbalanced tree will have null values to fill level */
-function TreeNode(value) {
-    this.val = value;
-    this.left = this.right = null;
-}
+
+// const largestNode = (parent, child) => {
+//   if (!child.right) {
+//     return [parent, child];
+//   } else {
+//     return largestNode(child, child.right);
+//   }
+// }
+
+// const secondLG = (head) => {
+//     if(!head){
+//         return null;
+//     }
+//   let [parent, child] = largestNode(null, head);
+//   if (!child.left) {
+//     return parent ? parent.val : null;
+//   }
+
+//   return largestNode(child, child.left)[1].val;
+// }
+
 const mapTreeNodes = (array) => {
     let treeArray = array.map((value, idx) => {
         if(value === null){
@@ -28,25 +45,8 @@ const mapTreeNodes = (array) => {
     })
    return treeArray;
 }
-// const largestNode = (parent, child) => {
-//   if (!child.right) {
-//     return [parent, child];
-//   } else {
-//     return largestNode(child, child.right);
-//   }
-// }
 
-// const secondLG = (head) => {
-//     if(!head){
-//         return null;
-//     }
-//   let [parent, child] = largestNode(null, head);
-//   if (!child.left) {
-//     return parent ? parent.val : null;
-//   }
 
-//   return largestNode(child, child.left)[1].val;
-// }
 const secondLG = (head) => {
   let count = 0;
 
@@ -68,6 +68,8 @@ const secondLG = (head) => {
 
   return walk(head);
 }
+
+
 
 
 

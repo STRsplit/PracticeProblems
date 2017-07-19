@@ -1,10 +1,10 @@
 /* Given two arrays, find the median value */
 
-const findArraysMedian = (array1, array2) => {
-  if(!array1 && !array2){
+const findArraysMedian = (array1 = [], array2 = []) => {
+  if(!array1.length && !array2.length){
     return null;
   }
-  let combinedLength = (array1 ? array1.length : 0) + (array2 ? array2.length : 0);
+  let combinedLength = array1.length + array2.length;
   let medianCount = Math.floor(combinedLength / 2);
 
   let a1Count = 0;
@@ -12,12 +12,11 @@ const findArraysMedian = (array1, array2) => {
   let lastVal;
   let prevVal;
 
-  if(!array1 || !array2){
-    let soloArr = array1 ? array1.slice() : array2.slice();
+  if(!array2.length){
     if(combinedLength % 2 === 0){
-      prevVal = soloArr[medianCount - 1];
+      prevVal = array1[medianCount - 1];
     }
-    lastVal = soloArr[medianCount];
+    lastVal = array1[medianCount];
     a1Count = medianCount + 1;
   }
   
@@ -42,3 +41,6 @@ const findArraysMedian = (array1, array2) => {
   } 
   return lastVal;
 }
+
+let a = findArraysMedian([1, 3, 5], [4, 8, 10, 11]);
+console.log(a)

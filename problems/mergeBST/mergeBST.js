@@ -21,32 +21,6 @@ Tree 1                     Tree 2
     / \   \ 
    5   4   7 */
 
-
-
-const mapTrees = (array) => {
-    let treeArray = array.map((value, idx) => {
-        if(value === null){
-            return null;
-        }
-        let node = new TreeNode(value);
-        return node;
-    }).map((treeNode, ind, arr) => {
-      if(ind !== 0){
-          let parent = arr[Math.floor((ind - 1) / 2)];
-            if(parent){
-                if(ind % 2 === 0){
-                    parent.right = treeNode;
-                } else {
-                    parent.left = treeNode;
-                }
-            }
-        }
-        return treeNode;
-    })
-   return treeArray[0];
-}
-
-
 const mergeBST = (tree1, tree2) => {
   if(!tree1 && !tree2){
     return null;
