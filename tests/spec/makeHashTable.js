@@ -105,12 +105,12 @@ describe('Hash Table', function() {
     it('Should return null when asked for value not in HT', function() {
       expect(ourHT.retrieve('Pinnochio')).to.equal(null)
     })
-  })  
+  })
   describe('HashTable: Remove Method', function() {
-    let ourHT;
+    let ourHT = makeHashTable();
     ourHT.insert('Houdini', 'magic')
-      ourHT.insert('Dog', 'gold')
-      ourHT.insert('Sublime', 'text')
+    ourHT.insert('Dog', 'gold')
+    ourHT.insert('Sublime', 'text')
     let x, foundKeys, foundVals;
     const resetVals = () => {
       foundKeys = [];
@@ -126,8 +126,7 @@ describe('Hash Table', function() {
       })
     }
     beforeEach(function(){
-      ourHT = makeHashTable(); 
-      resetVals()                 
+      resetVals();                 
     });
     afterEach(function(done){
       done();
@@ -149,5 +148,5 @@ describe('Hash Table', function() {
       expect(foundKeys).to.not.include('Dog')
       expect(x.length).to.equal(0)
     })
-  })
+  })  
 });

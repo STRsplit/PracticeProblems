@@ -20,7 +20,8 @@
 
 
 var LinkedList = function() {
-  this.head = this.tail = null;
+  this.head = null;
+  this.tail = null;
 };
 var ListNode = function(value){
   this.value = value;

@@ -27,17 +27,21 @@ const mapTrees = (array) => {
 }
 
 const LinkedList = function() {
-  this.head = this.tail = null;
+  this.head = null;
+  this.tail = null;
 };
+
 const ListNode = function(value){
   this.value = value;
   this.next = null;
 }
 
+
 LinkedList.prototype.addToTail = function(value) {
   let node = new ListNode(value);
   if(!this.head){
     this.head = node;
+
   } if(this.tail) {
     this.tail.next = node;
   }
@@ -74,3 +78,7 @@ LinkedList.prototype.contains = function(value) {
 LinkedList.prototype.makeNode = function(value) {
   return new ListNode(value);
 };
+
+// module.exports = {
+//   LinkedList
+// }

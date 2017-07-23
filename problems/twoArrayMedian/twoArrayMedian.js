@@ -41,6 +41,3 @@ const findArraysMedian = (array1 = [], array2 = []) => {
   } 
   return lastVal;
 }
-
-let a = findArraysMedian([1, 3, 5], [4, 8, 10, 11]);
-console.log(a)

@@ -17,7 +17,8 @@ let ListNode = (value) => {
     this.next = null;
 }
 let LL = () => {
-  this.tail = this.head = null;
+  this.tail = null;
+  this.head = null;
 }
 
 LL.prototype.addToTail = function(value) {
