@@ -1,3 +1,35 @@
+const Matrix = (n, start) => {
+  let [startType, startVal] = typeof start === 'number' ? ['number', start] : ['string', 65];
+  let secLet = 64;
+  let addedString = '';
+  let iterateUp = (valType, count) => {
+    if(valType === 'number'){
+      return count;
+    } else {
+      console.log(count)
+      let repString = '';
+      if(count % 91 === 0){
+        ++secLet;
+        count = 65;
+        startVal = 66;
+        addedString += String.fromCharCode(secLet);
+      }
+      repString += addedString + String.fromCharCode((count % 65) + 65);
+      return repString;
+    }
+  }
+  let matrix = [];
+  for(let i = 0; i < n; i++){
+    let innerArray = [];
+    for(let x = 0; x < n; x++){
+      let value = iterateUp(startType, startVal++)
+      innerArray.push(value)
+    }
+    matrix.push(innerArray)
+  }
+  return matrix;
+}
+
 const TreeNode = function(value) {
   this.val = value;
   this.left = this.right = null;
@@ -31,7 +63,7 @@ const LinkedList = function() {
   this.tail = null;
 };
 
-const ListNode = function(value){
+const ListNode = function(value) {
   this.value = value;
   this.next = null;
 }
@@ -79,6 +111,7 @@ LinkedList.prototype.makeNode = function(value) {
   return new ListNode(value);
 };
 
-// module.exports = {
-//   LinkedList
-// }
+module.exports = {
+  LinkedList,
+  Matrix
+}
