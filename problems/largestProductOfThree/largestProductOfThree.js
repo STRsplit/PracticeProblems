@@ -9,5 +9,25 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  let result;
+
+  const gatherProduct = (startInd, product = 1, set = new Set()) => {
+    if((result === undefined || product > result) && set.size === 3){
+      result = product;
+      return;
+    }
+    if(set.size === 3){
+      return;
+    }
+
+    for(let i = startInd; i < array.length; i++){
+      let currProd = product * array[i];
+      set.add(array[i])
+      gatherProduct(startInd += 1, currProd, set)
+      set.delete(array[i]);
+    }
+    return;
+  }
+  gatherProduct(0)
+  return result;
 };

@@ -31,24 +31,28 @@ var binarySearch = function (array, target) {
  */
 let counter;
 
-binarySearch = function (array, target){
-  counter = 0;
-  if(!array || (!target && target !== 0) || !array.length){
+const binarySearch = function (array, target, start = null, end = null){
+  if(!array || !array.length || !target){
     return null;
   }
-  let begin = 0;
-  let end = array.length - 1;
-  while(begin <= end){
-    counter++;
-    let mid = Math.floor((end + begin) / 2);
-    if(target === array[mid]){
-      return mid;
-    } else if(target < array[mid]){
-      end = mid - 1;
-    } else {
-      begin = mid + 1;
-    }
+  start = start || 0;
+  end = end || array.length - 1;
+  mid = Math.floor((start + end) / 2);
+  if(array[mid] === target){
+    return mid;
+  } 
+  if(start === end){
+    return null;
+  } else if(array[mid] < target){
+    start = mid + 1
+    return binarySearch(array, target, start, end);
+  } else if(array[mid] > target){
+    end = mid - 1;
+    return binarySearch(array, target, start, end)
   }
   return null;
 }
 
+
+let x = [1, 4, 8, 10, 12, 14];
+console.log(binarySearch(x, 12));
