@@ -23,7 +23,7 @@ var largestProductOfThree = function(array) {
     for(let i = startInd; i < array.length; i++){
       let currProd = product * array[i];
       set.add(array[i])
-      gatherProduct(startInd += 1, currProd, set)
+      gatherProduct(i + 1, currProd, set)
       set.delete(array[i]);
     }
     return;
@@ -31,3 +31,7 @@ var largestProductOfThree = function(array) {
   gatherProduct(0)
   return result;
 };
+
+let x = [2, 1, 3, 7, -21, -3];
+
+console.log(largestProductOfThree(x))

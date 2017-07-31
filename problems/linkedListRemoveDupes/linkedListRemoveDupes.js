@@ -26,13 +26,42 @@ const deleteDuplicates = function(head) {
     return head;
 };
 
+/* If list unordered */
+
+const deleteDupes = (ll) => {
+  if(!ll){
+    return null;
+  }
+  let foundVals = new Set();
+  foundVals.add(ll.value, ll)
+  let curr = ll;
+  let examine = ll.next;
+  while(examine){
+    let seenVal = foundVals.has(examine.value);
+    if(!seenVal && foundVals.add(examine.value, examine)){
+      curr.next = examine;
+      curr = examine;
+      examine = examine.next;
+    } else {
+      curr.next = examine.next;
+      examine = examine.next;
+    }
+  }
+  return ll;
+}
 var list = new LinkedList();    //yields 'null'
 list.addToTail(4);
+list.addToTail(5);
 list.addToTail(5);
 list.addToTail(8);
 list.addToTail(11);
 list.addToTail(5);
+list.addToTail(5);
+list.addToTail(5);
+list.addToTail(5);
+list.addToTail(14);
+
 // console.log(list)
 
-let x = deleteDuplicates(list.head);
-console.log(x.next.next.next)
+let x = deleteDupes(list.head);
+console.log(x, x.next.next.next)

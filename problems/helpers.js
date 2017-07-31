@@ -113,5 +113,7 @@ LinkedList.prototype.makeNode = function(value) {
 
 module.exports = {
   LinkedList,
-  Matrix
+  Matrix,
+  mapTrees,
+  ListNode
 }
