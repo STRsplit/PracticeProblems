@@ -39,5 +39,3 @@ const convertBSTToLL = (root) => {
   walkTree(root)
   return results;
 }
-
-console.log(convertBSTToLL(x)[2].next.next)
