@@ -55,4 +55,4 @@ const binarySearch = function (array, target, start = null, end = null){
 
 
 let x = [1, 4, 8, 10, 12, 14];
-console.log(binarySearch(x, 12));
+console.log(binarySearch(x, 16));

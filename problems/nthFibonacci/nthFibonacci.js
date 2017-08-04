@@ -21,8 +21,11 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
-};
+  if(n <= 2){
+   return 1;
+  }
 
+  return nthFibonacci(n - 1) + nthFibonacci(n - 2);
+};
 
 

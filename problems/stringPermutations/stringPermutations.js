@@ -21,3 +21,4 @@ const findPerms = (str) => {
   }
  return getPerms(str, '')
 }
+console.log(findPerms(a))

@@ -22,5 +22,12 @@
 */
 
 Array.prototype.isSubsetOf = function (arr) {
-  // your code here
+  const containerMap = new Map();
+  arr.forEach(val => containerMap.set(val, val));
+  for(let i = 0; i < this.length; i++){
+    if(!containerMap.has(this[i])){
+      return false;
+    }
+  }
+  return true;
 };

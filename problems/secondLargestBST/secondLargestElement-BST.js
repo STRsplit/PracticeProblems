@@ -68,6 +68,27 @@ const secondLG = (head) => {
 
   return walk(head);
 }
+const nthLG = (head, n) => {
+  let count = 0;
+
+  const walk = (node) => {
+    if (!node) {
+      return null;
+    }
+
+    let val = walk(node.right);   
+    if (val !== null) { return val; }
+
+    count++;
+    if (count === n) {
+      return node.val;
+    }
+
+    return walk(node.left); 
+  }  
+
+  return walk(head);
+}
 
 
 

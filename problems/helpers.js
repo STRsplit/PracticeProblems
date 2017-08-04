@@ -57,6 +57,34 @@ const mapTrees = (array) => {
     })
    return treeArray[0];
 }
+const mapTreesWithParent = (array) => {
+    let treeArray = array.map((value, idx) => {
+        if(value === null){
+            return null;
+        }
+        let node = new TreeNode(value);
+        return node;
+    }).map((treeNode, ind, arr) => {
+      if(treeNode){
+        if(ind === 0){
+          treeNode.parent = null;
+        } else {
+            let parent = arr[Math.floor((ind - 1) / 2)];
+              if(parent){
+                treeNode.parent = parent;
+                  if(ind % 2 === 0){
+                      parent.right = treeNode;
+                  } else {
+                      parent.left = treeNode;
+                  }
+              }
+          }
+        return treeNode;
+      }
+      return null;
+    })
+   return treeArray[0];
+}
 
 const LinkedList = function() {
   this.head = null;
@@ -115,5 +143,6 @@ module.exports = {
   LinkedList,
   Matrix,
   mapTrees,
+  mapTreesWithParent,
   ListNode
 }

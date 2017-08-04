@@ -5,3 +5,5 @@ node_modules/
 
 #DS
 .DS_Store
+problems/stringPract*
+problems/stringPract/*
