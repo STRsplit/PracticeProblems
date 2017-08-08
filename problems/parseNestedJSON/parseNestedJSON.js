@@ -1,17 +1,4 @@
 /* Given JSON object, parse out all keys.
-i.e. 
-{
-  "a" : {
-    "b" : {
-      "c": {
-        "d": "Pinnochio"
-      }
-    }
-  }
-} */
-
-
-
 
 let x = {
   "a" : {
@@ -24,19 +11,32 @@ let x = {
 } 
 
 let y = { 
-  "a" : 'hello',
+  "a" : {c: {d: 'hello'}},
   "b" : [{'a': 'b'}, 'j', 'y']
-}
+} */
 
-const drillDown = (obj, container = []) => {
+
+
+const parseIt = (obj, container = []) => {
   for(let keys in obj){
     if(obj.hasOwnProperty(keys)){
-      container.push(keys)
+      container.push([keys, obj[keys]])
       if(typeof obj[keys] === 'object'){
-        drillDown(obj[keys], container)
+        parseIt(obj[keys], container)
       }
     }
   }
   return container;
+}
+
+const printKeys = (obj, container = []) => {
+  for(let keys in obj){
+    if(obj.hasOwnProperty(keys)){
+      console.log(keys)
+      if(typeof obj[keys] === 'object'){
+        printKeys(obj[keys], container)
+      }
+    }
+  }
 }
 

@@ -2,10 +2,8 @@ const allsubSets = (numbers) => {
  let result = [];
 
  const walk = (startIdx, set = new Set()) => {
-  console.log(set)
-  if (set.size === numbers.length) {
+  if (set.size) {
     result.push([...set.keys()]);
-    return;
   }
 
   for (let idx = startIdx; idx < numbers.length; idx++) {

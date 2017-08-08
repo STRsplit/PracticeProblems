@@ -9,15 +9,24 @@
 *    ["rock", "paper", "rock"],
              ...etc...
      ]
-*
-* Extra credit:
-*   - Make your function return answers for any number of rounds.
-* Example:
-* rockPaperScissors(5); // => [['rock', 'rock', 'rock', 'rock', 'rock'], etc...]
-*
+
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+var rockPaperScissors = function (n) {
+  let plays = ['rock', 'paper', 'scissors'];
+  let possible = [];
+
+  const getPlays = (options, curr) => {
+    if(curr.length === options.length){
+      possible.push(curr);
+      return;
+    }
+    for(let i = 0; i < options.length; i++){
+      let currPlay = curr.concat(options[i]);
+      getPlays(options, currPlay)
+    }
+  }
+  getPlays(plays, [])
+  return possible;
 };
+
