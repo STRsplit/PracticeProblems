@@ -1,6 +1,7 @@
 const { mapTreesWithParent } = require('../helpers.js')
 
 let x = mapTreesWithParent([8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7])
+let z = mapTreesWithParent([8, 4, 12, 2, 6, null, null])
 let y = mapTreesWithParent([8, 4, null, 2, 6, null, null, 1, 3, 5, 7])
 
 const walkLeft = (leftNode) => {
@@ -32,3 +33,4 @@ const findNextNode = (node) => {
   }
   return _findNextNode(node);
 }
+
